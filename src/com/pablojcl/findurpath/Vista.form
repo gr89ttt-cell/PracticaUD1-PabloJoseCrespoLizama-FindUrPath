@@ -64,13 +64,16 @@
         <properties>
           <background color="-3551276"/>
         </properties>
-        <border type="line"/>
+        <border type="line">
+          <color color="-16777216"/>
+        </border>
         <children>
           <component id="f8958" class="javax.swing.JLabel" binding="JLabelAddPanel">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <foreground color="-16777216"/>
               <text value="Añadir Ruta"/>
             </properties>
           </component>
@@ -81,6 +84,8 @@
               </grid>
             </constraints>
             <properties>
+              <background color="-6380375"/>
+              <caretColor color="-16777216"/>
               <text value=""/>
               <toolTipText value="Nombre de la ruta"/>
             </properties>
@@ -92,6 +97,8 @@
               </grid>
             </constraints>
             <properties>
+              <background color="-6380375"/>
+              <caretColor color="-16777216"/>
               <text value=""/>
               <toolTipText value="Duración"/>
             </properties>
@@ -101,6 +108,8 @@
               <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-3551276"/>
+              <foreground color="-16777216"/>
               <text value="BTT?"/>
               <toolTipText value="(Marcar si es un sendero multiactividad)"/>
             </properties>
@@ -112,6 +121,7 @@
               </grid>
             </constraints>
             <properties>
+              <background color="-3551276"/>
               <label value="Añadir"/>
               <margin top="8" left="8" bottom="8" right="8"/>
               <text value="Añadir"/>
@@ -144,24 +154,34 @@
         <constraints>
           <grid row="1" column="2" row-span="4" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-3551276"/>
+        </properties>
         <border type="none"/>
         <children>
           <scrollpane id="334a6">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <alignmentX value="0.5"/>
+              <alignmentY value="0.5"/>
+              <background color="-3551276"/>
+              <foreground color="-16777216"/>
+            </properties>
             <border type="line" title="Resultado de Búsqueda">
+              <title-color color="-16777216"/>
               <size top="12" left="12" bottom="12" right="12"/>
-              <color color="-4473925"/>
+              <color color="-16777216"/>
             </border>
             <children>
               <component id="7b782" class="javax.swing.JTextArea" binding="textAreaSR">
                 <constraints/>
                 <properties>
+                  <background color="-6380375"/>
+                  <editable value="false"/>
                   <inheritsPopupMenu value="false"/>
-                  <margin top="0" left="0" bottom="0" right="0"/>
+                  <margin top="2" left="2" bottom="2" right="2"/>
                 </properties>
               </component>
             </children>
@@ -171,6 +191,7 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-3551276"/>
               <label value="PR"/>
               <text value="PR"/>
               <toolTipText value="Recorrido Pequeño"/>
@@ -181,6 +202,7 @@
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-3551276"/>
               <label value="GR"/>
               <text value="GR"/>
               <toolTipText value="Recorrido Grande"/>
@@ -191,6 +213,7 @@
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-3551276"/>
               <label value="SL"/>
               <text value="SL"/>
               <toolTipText value="Sendero Local"/>
@@ -229,13 +252,16 @@
         <properties>
           <background color="-3551276"/>
         </properties>
-        <border type="line"/>
+        <border type="line">
+          <color color="-16777216"/>
+        </border>
         <children>
           <component id="fd56f" class="javax.swing.JLabel" binding="JLabelDeletePath">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <foreground color="-16777216"/>
               <text value="Borrar Ruta"/>
             </properties>
           </component>
@@ -246,6 +272,8 @@
               </grid>
             </constraints>
             <properties>
+              <background color="-6380375"/>
+              <caretColor color="-16777216"/>
               <text value=""/>
               <toolTipText value="Nombre de la ruta"/>
             </properties>
@@ -257,6 +285,7 @@
               </grid>
             </constraints>
             <properties>
+              <background color="-3551276"/>
               <label value="Borrar"/>
               <margin top="8" left="8" bottom="8" right="8"/>
               <text value="Borrar"/>
