@@ -27,6 +27,7 @@ public class Vista {
     private JLabel JLabelDeletePath;
     private JTextField textFieldDelPath;
     private JButton btnDelPath;
+    private JTextField textFieldReferencia;
 
     public Vista(){
         frame = new JFrame("EditorMVC");

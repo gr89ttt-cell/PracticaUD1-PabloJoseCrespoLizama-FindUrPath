@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="6" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="691" height="471"/>
+      <xy x="20" y="20" width="691" height="506"/>
     </constraints>
     <properties>
       <background color="-3551276"/>
@@ -54,7 +54,7 @@
           </vspacer>
         </children>
       </grid>
-      <grid id="c1613" binding="panelAddPath" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="c1613" binding="panelAddPath" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="8" left="8" bottom="8" right="8"/>
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="1" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -100,12 +100,12 @@
               <background color="-6380375"/>
               <caretColor color="-16777216"/>
               <text value=""/>
-              <toolTipText value="Duración"/>
+              <toolTipText value="Duración (Km)"/>
             </properties>
           </component>
           <component id="8f38f" class="javax.swing.JCheckBox" binding="checkBoxBTT">
             <constraints>
-              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-3551276"/>
@@ -116,7 +116,7 @@
           </component>
           <component id="5c1ef" class="javax.swing.JButton" binding="btnSent">
             <constraints>
-              <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="1" anchor="1" fill="1" indent="0" use-parent-layout="false">
+              <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="1" anchor="1" fill="1" indent="0" use-parent-layout="false">
                 <maximum-size width="180" height="-1"/>
               </grid>
             </constraints>
@@ -129,9 +129,22 @@
           </component>
           <vspacer id="36ddb">
             <constraints>
-              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
+          <component id="13724" class="javax.swing.JTextField" binding="textFieldReferencia">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-6380375"/>
+              <caretColor color="-16777216"/>
+              <text value=""/>
+              <toolTipText value="Referencia"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <hspacer id="7a101">

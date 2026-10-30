@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31a61348-1c44-4893-94e2-53e83a7df53e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/pablojcl/findurpath/GrandRoute.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/pablojcl/findurpath/PetiteRoute.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Ruta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/pablojcl/findurpath/SenderoL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Vista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Vista.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Vista.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Vista.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Vista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Vista.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +31,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="3LKXJdfCe2XC6cm2VzMvmSdkqL2" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="440" />
@@ -38,6 +44,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -86,7 +93,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1793203663010</updated>
-      <workItem from="1793203669294" duration="9999000" />
+      <workItem from="1793203669294" duration="10719000" />
+      <workItem from="1793369302640" duration="2267000" />
+      <workItem from="1793371604284" duration="2717000" />
     </task>
     <servers />
   </component>
@@ -98,7 +107,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
