@@ -23,4 +23,23 @@ public class Modelo {
         escritor.println(texto);
         escritor.close();
     }
+
+    public boolean existeRuta(String matricula) {
+        for (Ruta ruta: Controlador.lista) {
+            if (ruta.getNombre().equals(matricula)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void newRuta(String nombre, int kilometros, String referencia, boolean btt) {
+        if (kilometros < 10){
+            Controlador.lista.add(new SenderoL(nombre,kilometros,referencia, btt));
+        } else if (kilometros > 10 && kilometros < 50){
+            Controlador.lista.add(new PetiteRoute(nombre,kilometros,referencia, btt));
+        } else {
+            Controlador.lista.add(new GrandRoute(nombre, kilometros, referencia, btt));
+        }
+    }
 }

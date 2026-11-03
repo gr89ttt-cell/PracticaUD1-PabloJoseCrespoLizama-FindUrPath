@@ -4,30 +4,30 @@ import javax.swing.*;
 
 public class Vista {
 
-    private JFrame frame;
+    public JFrame frame;
     JMenuItem itemGuardar;
     JMenuItem itemAbrir;
-    private JPanel panelTop;
-    private JPanel panelBot;
-    private JLabel Title;
-    private JPanel panelAddPath;
-    private JLabel JLabelAddPanel;
-    private JTextField textFieldNamePath;
-    private JTextField textFieldLength;
-    private JCheckBox checkBoxBTT;
+    public JPanel panelTop;
+    public JPanel panelBot;
+    public JLabel Title;
+    public JPanel panelAddPath;
+    public JLabel JLabelAddPanel;
+    public JTextField textFieldNamePath;
+    public JTextField textFieldLength;
+    public JCheckBox checkBoxBTT;
     private JPanel mainPanel;
-    private JButton btnPR;
-    private JButton btnGR;
-    private JButton btnSL;
-    private JCheckBox checkBoxBTTSearch;
-    private JTextArea textAreaSR;
-    private JButton btnSent;
-    private JPanel panelSearch;
-    private JPanel panelDeletePath;
-    private JLabel JLabelDeletePath;
-    private JTextField textFieldDelPath;
-    private JButton btnDelPath;
-    private JTextField textFieldReferencia;
+    public JButton btnPR;
+    public JButton btnGR;
+    public JButton btnSL;
+    public JCheckBox checkBoxBTTSearch;
+    public JTextArea textAreaSR;
+    public JButton btnSent;
+    public JPanel panelSearch;
+    public JPanel panelDeletePath;
+    public JLabel JLabelDeletePath;
+    public JTextField textFieldDelPath;
+    public JButton btnDelPath;
+    public JTextField textFieldReferencia;
 
     public Vista(){
         frame = new JFrame("EditorMVC");
