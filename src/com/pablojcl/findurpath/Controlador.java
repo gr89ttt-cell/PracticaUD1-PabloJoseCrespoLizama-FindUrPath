@@ -20,7 +20,6 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
     private Vista vista;
     private Modelo modelo;
     private File ultimaRutaExportada;
-    public static LinkedList<Ruta> lista;
 
     public Controlador(Vista vista, Modelo modelo){
         this.vista = vista;
@@ -39,11 +38,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
         }
     }
     private boolean comprovarCamposVaciosDel() {
-        if (vista.textFieldDelPath.getText().isEmpty()){
-            return true;
-        } else {
-            return false;
-        }
+        return vista.textFieldDelPath.getText().isEmpty();
     }
 
     private void limpiarCampos() {
@@ -88,7 +83,9 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
                 limpiarCampos();
                 Utilities.mensajeError("Ruta creada con exito"
                         +vista.textAreaSR.getText());
+                limpiarCampos();
                 break;
+
             case "import":
                 JFileChooser selectorFichero = Utilities.crearSelectorFichero(ultimaRutaExportada,
                         "Archivos XML","xml");
@@ -105,6 +102,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
                     }
                 }
                 break;
+
             case "export":
                 JFileChooser selectorFichero2 = Utilities.crearSelectorFichero(ultimaRutaExportada,
                         "Archivos XML","xml");
@@ -119,44 +117,57 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
                     }
                 }
                 break;
+
             case "GR":
-                for(Ruta ruta: lista)
+                for(Ruta ruta: modelo.listaRutas)
                     if(ruta instanceof GrandRoute){
                         if(vista.checkBoxBTTSearch.isSelected()){
                             if(ruta.isBtt()){
-                                ruta.toString();
+                                vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
                             }
                         } else {
-                            ruta.toString();
+                            vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
                         }
                     }
                 break;
+
             case "PR":
-                for(Ruta ruta: lista)
+                for(Ruta ruta: modelo.listaRutas)
                     if(ruta instanceof PetiteRoute){
                         if(vista.checkBoxBTTSearch.isSelected()){
                             if(ruta.isBtt()){
-                                ruta.toString();
+                                vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
                             }
                         } else {
-                            ruta.toString();
+                            vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
                         }
                     }
                 break;
+
             case "SL":
-                for(Ruta ruta: lista)
+                for(Ruta ruta: modelo.listaRutas)
                     if(ruta instanceof SenderoL){
                         if(vista.checkBoxBTTSearch.isSelected()){
                             if(ruta.isBtt()){
-                                ruta.toString();
+                                vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
                             }
                         } else {
-                            ruta.toString();
+                            vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
                         }
                     }
+                break;
 
-            case"Borrar":
-
+            case "Borrar":
+                if (comprovarCamposVaciosDel()) {
+                    Utilities.mensajeError("El campo \"Nombre de la Ruta\" no puede estar vacio. "
+                            + vista.textFieldDelPath.getText());
+                    break;
+                }
+                for(Ruta ruta: modelo.listaRutas)
+                    if (ruta.getNombre().equals(vista.textFieldDelPath.getText()))
+                        modelo.listaRutas.remove(ruta);
+                    limpiarCampos();
+                        break;
         }
     }
 

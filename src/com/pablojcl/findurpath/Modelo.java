@@ -13,10 +13,20 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Modelo {
+
+    public ArrayList<Ruta> listaRutas;
+
+    public Modelo() {
+        listaRutas= new ArrayList<Ruta>();
+    }
+
+    public ArrayList<Ruta> obtenerVehiculos() {
+        return listaRutas;
+    }
 
     public String cargarText(File fichero) throws FileNotFoundException {
         Scanner lector = new Scanner(fichero);
@@ -36,7 +46,7 @@ public class Modelo {
     }
 
     public boolean existeRuta(String nombre) {
-        for (Ruta ruta: Controlador.lista) {
+        for (Ruta ruta: listaRutas) {
             if (ruta.getNombre().equals(nombre)) {
                 return true;
             }
@@ -46,11 +56,11 @@ public class Modelo {
 
     public void newRuta(String nombre, int kilometros, String referencia, boolean btt) {
         if (kilometros < 10){
-            Controlador.lista.add(new SenderoL(nombre,kilometros,referencia, btt));
+            listaRutas.add(new SenderoL(nombre,kilometros,referencia, btt));
         } else if (kilometros > 10 && kilometros < 50){
-            Controlador.lista.add(new PetiteRoute(nombre,kilometros,referencia, btt));
+            listaRutas.add(new PetiteRoute(nombre,kilometros,referencia, btt));
         } else {
-            Controlador.lista.add(new GrandRoute(nombre, kilometros, referencia, btt));
+            listaRutas.add(new GrandRoute(nombre, kilometros, referencia, btt));
         }
     }
 
@@ -67,7 +77,7 @@ public class Modelo {
         Element nodoDatos = null;
         Text texto = null;
 
-        for (Ruta ruta: Controlador.lista) {
+        for (Ruta ruta: listaRutas) {
             if (ruta instanceof GrandRoute) {
                 nodoRuta = documento.createElement("GR");
             } else if (ruta instanceof PetiteRoute){
@@ -109,7 +119,7 @@ public class Modelo {
     }
 
     public void importarXML(File fichero) throws ParserConfigurationException, IOException, SAXException {
-        Controlador.lista = new LinkedList<Ruta>();
+        listaRutas = new ArrayList<Ruta>();
         Ruta newRuta = null;
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
