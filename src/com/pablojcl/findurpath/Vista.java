@@ -30,7 +30,7 @@ public class Vista {
     public JTextField textFieldReferencia;
 
     public Vista(){
-        frame = new JFrame("EditorMVC");
+        frame = new JFrame("FindUrPath - Pablo José Crespo Lizama - MVC");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

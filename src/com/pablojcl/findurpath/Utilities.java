@@ -9,6 +9,10 @@ public class Utilities {
         JOptionPane.showMessageDialog(null,
                 mensaje,"Error",JOptionPane.ERROR_MESSAGE);
     }
+    public static void mensajeRecuerdo(String mensaje) {
+        JOptionPane.showMessageDialog(null,
+                mensaje,"Ruta Creada Panel",JOptionPane.PLAIN_MESSAGE);
+    }
     public static int mensajeConfirmacion(String mensaje,String titulo) {
         return JOptionPane.showConfirmDialog(null,mensaje,
                 titulo,JOptionPane.YES_NO_OPTION);

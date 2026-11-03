@@ -82,8 +82,9 @@ public class Modelo {
                 nodoRuta = documento.createElement("GR");
             } else if (ruta instanceof PetiteRoute){
                 nodoRuta = documento.createElement("PR");
-            } else
+            } else if (ruta instanceof SenderoL) {
                 nodoRuta = documento.createElement("SL");
+            }
             raiz.appendChild(nodoRuta);
 
             nodoDatos = documento.createElement("nombre");
@@ -130,11 +131,46 @@ public class Modelo {
 
         for (int i=0;i<listaElementos.getLength();i++) {
             Element nodoRuta = (Element) listaElementos.item(i);
+
+            //intento fallido ¡~¡
+            /*
             newRuta(nodoRuta.getChildNodes().item(0).getTextContent(),
                     Integer.parseInt(nodoRuta.getChildNodes().item(1).getTextContent()),
                     nodoRuta.getChildNodes().item(2).getTextContent(),
                     Boolean.getBoolean(nodoRuta.getChildNodes().item(3).getTextContent()));
-        }
+            */
 
-    }
+            //intento fallido ¡~¡
+            /*
+            String newRutaNombre = nodoRuta.getChildNodes().item(0).getTextContent();
+            int newRutaKilometros = Integer.parseInt(nodoRuta.getChildNodes().item(1).getTextContent());
+            String newRutaReferencia = nodoRuta.getChildNodes().item(2).getTextContent();
+            boolean newRutaBTT = Boolean.getBoolean(nodoRuta.getChildNodes().item(3).getTextContent());
+
+            newRuta(newRutaNombre,newRutaKilometros,newRutaReferencia,newRutaBTT);
+             */
+
+            if (nodoRuta.getTagName().equals("GR")) {
+                newRuta = new GrandRoute(nodoRuta.getChildNodes().item(0).getTextContent(),
+                        Integer.parseInt(nodoRuta.getChildNodes().item(1).getTextContent()),
+                        nodoRuta.getChildNodes().item(2).getTextContent(),
+                        Boolean.parseBoolean(nodoRuta.getChildNodes().item(3).getTextContent()));
+                listaRutas.add(newRuta);
+
+            } else if (nodoRuta.getTagName().equals("PR")) {
+                    newRuta = new PetiteRoute(nodoRuta.getChildNodes().item(0).getTextContent(),
+                            Integer.parseInt(nodoRuta.getChildNodes().item(1).getTextContent()),
+                            nodoRuta.getChildNodes().item(2).getTextContent(),
+                            Boolean.parseBoolean(nodoRuta.getChildNodes().item(3).getTextContent()));
+                    listaRutas.add(newRuta);
+
+            } else if (nodoRuta.getTagName().equals("SL")) {
+                    newRuta = new SenderoL(nodoRuta.getChildNodes().item(0).getTextContent(),
+                            Integer.parseInt(nodoRuta.getChildNodes().item(1).getTextContent()),
+                            nodoRuta.getChildNodes().item(2).getTextContent(),
+                            Boolean.parseBoolean(nodoRuta.getChildNodes().item(3).getTextContent()));
+                    listaRutas.add(newRuta);
+                }
+            }
+        }
 }

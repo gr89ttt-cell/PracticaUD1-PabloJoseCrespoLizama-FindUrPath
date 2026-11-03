@@ -48,6 +48,10 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
         vista.textFieldDelPath.setText(null);
     }
 
+    private void limpiarSR(){
+        vista.textAreaSR.setText(null);
+    }
+
     private void asociarListeners(ActionListener listener){
         vista.itemExport.addActionListener(listener);
         vista.itemImport.addActionListener(listener);
@@ -81,8 +85,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
                 modelo.newRuta(vista.textFieldNamePath.getText(),Integer.parseInt(vista.textFieldLength.getText()),
                         vista.textFieldReferencia.getText(),vista.checkBoxBTT.isSelected());
                 limpiarCampos();
-                Utilities.mensajeError("Ruta creada con exito"
-                        +vista.textAreaSR.getText());
+                Utilities.mensajeRecuerdo("Ruta creada con exito");
                 limpiarCampos();
                 break;
 
@@ -119,6 +122,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
                 break;
 
             case "GR":
+                limpiarSR();
                 for(Ruta ruta: modelo.listaRutas)
                     if(ruta instanceof GrandRoute){
                         if(vista.checkBoxBTTSearch.isSelected()){
@@ -132,6 +136,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
                 break;
 
             case "PR":
+                limpiarSR();
                 for(Ruta ruta: modelo.listaRutas)
                     if(ruta instanceof PetiteRoute){
                         if(vista.checkBoxBTTSearch.isSelected()){
@@ -145,6 +150,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
                 break;
 
             case "SL":
+                limpiarSR();
                 for(Ruta ruta: modelo.listaRutas)
                     if(ruta instanceof SenderoL){
                         if(vista.checkBoxBTTSearch.isSelected()){
@@ -163,11 +169,11 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
                             + vista.textFieldDelPath.getText());
                     break;
                 }
-                for(Ruta ruta: modelo.listaRutas)
-                    if (ruta.getNombre().equals(vista.textFieldDelPath.getText()))
-                        modelo.listaRutas.remove(ruta);
+                for(int i = 0; i < modelo.listaRutas.size(); i++)
+                    if (modelo.listaRutas.get(i).getNombre().equals(vista.textFieldDelPath.getText()))
+                        modelo.listaRutas.remove(i);
                     limpiarCampos();
-                        break;
+                    break;
         }
     }
 

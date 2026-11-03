@@ -6,9 +6,11 @@
       <change beforePath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Controlador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Controlador.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Modelo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Modelo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Ruta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Ruta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Utilities.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Utilities.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Controlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Modelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Modelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Ruta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Ruta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Utilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Vista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Vista.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +98,7 @@
       <workItem from="1793369302640" duration="2267000" />
       <workItem from="1793371604284" duration="2717000" />
       <workItem from="1793715098558" duration="6089000" />
-      <workItem from="1793728673471" duration="7493000" />
+      <workItem from="1793728673471" duration="10439000" />
     </task>
     <servers />
   </component>
