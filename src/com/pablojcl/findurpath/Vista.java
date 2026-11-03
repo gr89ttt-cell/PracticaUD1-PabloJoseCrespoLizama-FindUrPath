@@ -5,8 +5,8 @@ import javax.swing.*;
 public class Vista {
 
     public JFrame frame;
-    JMenuItem itemGuardar;
-    JMenuItem itemAbrir;
+    JMenuItem itemExport;
+    JMenuItem itemImport;
     public JPanel panelTop;
     public JPanel panelBot;
     public JLabel Title;
@@ -43,14 +43,14 @@ public class Vista {
     private void crearBarraMenu(){
         JMenuBar barra = new JMenuBar();
         JMenu menu = new JMenu("Archivo");
-        itemGuardar = new JMenuItem("Guardar");
-        itemAbrir = new JMenuItem("Abrir");
+        itemImport = new JMenuItem("Importar Datos");
+        itemExport = new JMenuItem("Exportar Datos");
 
-        itemGuardar.setActionCommand("guardar");
-        itemAbrir.setActionCommand("abrir");
+        itemImport.setActionCommand("import");
+        itemExport.setActionCommand("export");
 
-        menu.add(itemAbrir);
-        menu.add(itemGuardar);
+        menu.add(itemImport);
+        menu.add(itemExport);
         barra.add(menu);
         frame.setJMenuBar(barra);
     }

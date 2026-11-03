@@ -54,8 +54,8 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
     }
 
     private void asociarListeners(ActionListener listener){
-        vista.itemGuardar.addActionListener(listener);
-        vista.itemAbrir.addActionListener(listener);
+        vista.itemExport.addActionListener(listener);
+        vista.itemImport.addActionListener(listener);
         vista.btnSent.addActionListener(listener);
         vista.btnDelPath.addActionListener(listener);
         vista.btnGR.addActionListener(listener);
@@ -71,28 +71,29 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
     public void actionPerformed(ActionEvent e) {
         String actionCommand = e.getActionCommand();
         switch (actionCommand) {
-            case "Nuevo":
+            case "Añadir":
                 if (comprovarCamposVaciosNew()) {
                     Utilities.mensajeError("Los siguientes campos no puede estar vacios: \n" +
-                            "Matricula \n Marca \n Modelo\n Fecha matriculación"
-                            +vista.textAreaSR.getText());
+                            "Nombre de la Ruta \n Kilometraje \n Referencia"
+                            + vista.textAreaSR.getText());
                     break;
                 }
                 if (modelo.existeRuta(vista.textFieldNamePath.getText())) {
-                    Utilities.mensajeError("Ya existe un vehiculo con esa matricula \n" +
+                    Utilities.mensajeError("Ya existe esta Ruta \n" +
                             vista.textFieldNamePath.getText());
                     break;
                 }
-                modelo.newRuta(vista.textFieldNamePath.getText(),Integer.parseInt(vista.textFieldLength.getText()),vista.textFieldReferencia.getText(),vista.checkBoxBTT.isSelected());
+                modelo.newRuta(vista.textFieldNamePath.getText(),Integer.parseInt(vista.textFieldLength.getText()),
+                        vista.textFieldReferencia.getText(),vista.checkBoxBTT.isSelected());
                 limpiarCampos();
                 Utilities.mensajeError("Ruta creada con exito"
                         +vista.textAreaSR.getText());
                 break;
-            case "Importar":
+            case "import":
                 JFileChooser selectorFichero = Utilities.crearSelectorFichero(ultimaRutaExportada,
                         "Archivos XML","xml");
-                int opcion = selectorFichero.showOpenDialog(null);
-                if (opcion==JFileChooser.APPROVE_OPTION) {
+                int importFile = selectorFichero.showOpenDialog(null);
+                if (importFile == JFileChooser.APPROVE_OPTION) {
                     try {
                         modelo.importarXML(selectorFichero.getSelectedFile());
                     } catch (ParserConfigurationException ex) {
@@ -102,18 +103,15 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
                     } catch (SAXException ex) {
                         ex.printStackTrace();
                     }
-                    Utilities.mensajeError("Importado con exito"
-                            +vista.textAreaSR.getText());
                 }
                 break;
-            case "Exportar":
+            case "export":
                 JFileChooser selectorFichero2 = Utilities.crearSelectorFichero(ultimaRutaExportada,
                         "Archivos XML","xml");
-                int opcion2 = selectorFichero2.showSaveDialog(null);
-                if (opcion2==JFileChooser.APPROVE_OPTION) {
+                int exportFile = selectorFichero2.showSaveDialog(null);
+                if (exportFile == JFileChooser.APPROVE_OPTION) {
                     try {
                         modelo.exportar(selectorFichero2.getSelectedFile());
-                        actualizarDatosConfiguracion(selectorFichero2.getSelectedFile());
                     } catch (ParserConfigurationException ex) {
                         ex.printStackTrace();
                     } catch (TransformerException ex) {
@@ -122,13 +120,43 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
                 }
                 break;
             case "GR":
-                vista.textAreaSR.setText("kms");
+                for(Ruta ruta: lista)
+                    if(ruta instanceof GrandRoute){
+                        if(vista.checkBoxBTTSearch.isSelected()){
+                            if(ruta.isBtt()){
+                                ruta.toString();
+                            }
+                        } else {
+                            ruta.toString();
+                        }
+                    }
                 break;
             case "PR":
-                vista.textAreaSR.setText("N Plazas");
+                for(Ruta ruta: lista)
+                    if(ruta instanceof PetiteRoute){
+                        if(vista.checkBoxBTTSearch.isSelected()){
+                            if(ruta.isBtt()){
+                                ruta.toString();
+                            }
+                        } else {
+                            ruta.toString();
+                        }
+                    }
                 break;
             case "SL":
-                vista.textAreaSR.setText("Sl");
+                for(Ruta ruta: lista)
+                    if(ruta instanceof SenderoL){
+                        if(vista.checkBoxBTTSearch.isSelected()){
+                            if(ruta.isBtt()){
+                                ruta.toString();
+                            }
+                        } else {
+                            ruta.toString();
+                        }
+                    }
+
+            case"Borrar":
+
         }
     }
 

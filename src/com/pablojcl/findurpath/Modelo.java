@@ -1,8 +1,19 @@
 package com.pablojcl.findurpath;
 
+import org.w3c.dom.*;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Modelo {
@@ -24,9 +35,9 @@ public class Modelo {
         escritor.close();
     }
 
-    public boolean existeRuta(String matricula) {
+    public boolean existeRuta(String nombre) {
         for (Ruta ruta: Controlador.lista) {
-            if (ruta.getNombre().equals(matricula)) {
+            if (ruta.getNombre().equals(nombre)) {
                 return true;
             }
         }
@@ -41,5 +52,79 @@ public class Modelo {
         } else {
             Controlador.lista.add(new GrandRoute(nombre, kilometros, referencia, btt));
         }
+    }
+
+    public void exportar(File fichero) throws ParserConfigurationException, TransformerException {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        DOMImplementation dom = builder.getDOMImplementation();
+        Document documento = dom.createDocument(null,"xml",null);
+
+        Element raiz = documento.createElement("Rutas");
+        documento.getDocumentElement().appendChild(raiz);
+
+        Element nodoRuta = null;
+        Element nodoDatos = null;
+        Text texto = null;
+
+        for (Ruta ruta: Controlador.lista) {
+            if (ruta instanceof GrandRoute) {
+                nodoRuta = documento.createElement("GR");
+            } else if (ruta instanceof PetiteRoute){
+                nodoRuta = documento.createElement("PR");
+            } else
+                nodoRuta = documento.createElement("SL");
+            raiz.appendChild(nodoRuta);
+
+            nodoDatos = documento.createElement("nombre");
+            nodoRuta.appendChild(nodoDatos);
+
+            texto = documento.createTextNode(ruta.getNombre());
+            nodoDatos.appendChild(texto);
+
+            nodoDatos = documento.createElement("kilometros");
+            nodoRuta.appendChild(nodoDatos);
+
+            texto = documento.createTextNode("" + ruta.getKilometros());
+            nodoDatos.appendChild(texto);
+
+            nodoDatos = documento.createElement("modelo");
+            nodoRuta.appendChild(nodoDatos);
+
+            texto = documento.createTextNode(ruta.getReferencia());
+            nodoDatos.appendChild(texto);
+
+            nodoDatos = documento.createElement("BTT");
+            nodoRuta.appendChild(nodoDatos);
+
+            texto = documento.createTextNode(""+ruta.isBtt());
+            nodoDatos.appendChild(texto);
+        }
+
+        Source source = new DOMSource(documento);
+        Result resultado = new StreamResult(fichero);
+
+        Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        transformer.transform(source,resultado);
+    }
+
+    public void importarXML(File fichero) throws ParserConfigurationException, IOException, SAXException {
+        Controlador.lista = new LinkedList<Ruta>();
+        Ruta newRuta = null;
+
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document documento = builder.parse(fichero);
+
+        NodeList listaElementos = documento.getElementsByTagName("*");
+
+        for (int i=0;i<listaElementos.getLength();i++) {
+            Element nodoRuta = (Element) listaElementos.item(i);
+            newRuta(nodoRuta.getChildNodes().item(0).getTextContent(),
+                    Integer.parseInt(nodoRuta.getChildNodes().item(1).getTextContent()),
+                    nodoRuta.getChildNodes().item(2).getTextContent(),
+                    Boolean.getBoolean(nodoRuta.getChildNodes().item(3).getTextContent()));
+        }
+
     }
 }

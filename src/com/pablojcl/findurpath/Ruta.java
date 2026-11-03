@@ -44,4 +44,13 @@ public abstract class Ruta {
     public void setBtt(boolean btt) {
         this.btt = btt;
     }
+
+    @Override
+    public String toString() {
+        return nombre + '\n' +
+                "\n Kilometros:" + kilometros +
+                "\n Referencia:'" + referencia +
+                "\n Ruta multiactividad:" + btt +
+                "\n -----------------------------";
+    }
 }
