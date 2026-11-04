@@ -1,5 +1,7 @@
 package com.pablojcl.findurpath;
 
+import com.github.lgooddatepicker.components.DatePicker;
+
 import javax.swing.*;
 
 public class Vista {
@@ -28,6 +30,9 @@ public class Vista {
     public JTextField textFieldDelPath;
     public JButton btnDelPath;
     public JTextField textFieldReferencia;
+    public DatePicker JDatePicker;
+    public JRadioButton todoRadioButton;
+    public JRadioButton especificoRadioButton;
 
     public Vista(){
         frame = new JFrame("FindUrPath - Pablo José Crespo Lizama - MVC");

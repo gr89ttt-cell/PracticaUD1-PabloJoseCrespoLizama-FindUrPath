@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -54,13 +55,13 @@ public class Modelo {
         return false;
     }
 
-    public void newRuta(String nombre, int kilometros, String referencia, boolean btt) {
+    public void newRuta(String nombre, int kilometros, String referencia, boolean btt, LocalDate fecha_ingreso) {
         if (kilometros < 10){
-            listaRutas.add(new SenderoL(nombre,kilometros,referencia, btt));
+            listaRutas.add(new SenderoL(nombre,kilometros,referencia, btt, fecha_ingreso));
         } else if (kilometros > 10 && kilometros < 50){
-            listaRutas.add(new PetiteRoute(nombre,kilometros,referencia, btt));
+            listaRutas.add(new PetiteRoute(nombre,kilometros,referencia, btt, fecha_ingreso));
         } else {
-            listaRutas.add(new GrandRoute(nombre, kilometros, referencia, btt));
+            listaRutas.add(new GrandRoute(nombre, kilometros, referencia, btt, fecha_ingreso));
         }
     }
 
@@ -110,6 +111,12 @@ public class Modelo {
 
             texto = documento.createTextNode(""+ruta.isBtt());
             nodoDatos.appendChild(texto);
+
+            nodoDatos = documento.createElement("fecha_ingreso");
+            nodoRuta.appendChild(nodoDatos);
+
+            texto = documento.createTextNode("" + ruta.getFecha_ingreso());
+            nodoDatos.appendChild(texto);
         }
 
         Source source = new DOMSource(documento);
@@ -154,21 +161,24 @@ public class Modelo {
                 newRuta = new GrandRoute(nodoRuta.getChildNodes().item(0).getTextContent(),
                         Integer.parseInt(nodoRuta.getChildNodes().item(1).getTextContent()),
                         nodoRuta.getChildNodes().item(2).getTextContent(),
-                        Boolean.parseBoolean(nodoRuta.getChildNodes().item(3).getTextContent()));
+                        Boolean.parseBoolean(nodoRuta.getChildNodes().item(3).getTextContent()),
+                        LocalDate.parse(nodoRuta.getChildNodes().item(4).getTextContent()));
                 listaRutas.add(newRuta);
 
             } else if (nodoRuta.getTagName().equals("PR")) {
                     newRuta = new PetiteRoute(nodoRuta.getChildNodes().item(0).getTextContent(),
                             Integer.parseInt(nodoRuta.getChildNodes().item(1).getTextContent()),
                             nodoRuta.getChildNodes().item(2).getTextContent(),
-                            Boolean.parseBoolean(nodoRuta.getChildNodes().item(3).getTextContent()));
+                            Boolean.parseBoolean(nodoRuta.getChildNodes().item(3).getTextContent()),
+                            LocalDate.parse(nodoRuta.getChildNodes().item(4).getTextContent()));
                     listaRutas.add(newRuta);
 
             } else if (nodoRuta.getTagName().equals("SL")) {
                     newRuta = new SenderoL(nodoRuta.getChildNodes().item(0).getTextContent(),
                             Integer.parseInt(nodoRuta.getChildNodes().item(1).getTextContent()),
                             nodoRuta.getChildNodes().item(2).getTextContent(),
-                            Boolean.parseBoolean(nodoRuta.getChildNodes().item(3).getTextContent()));
+                            Boolean.parseBoolean(nodoRuta.getChildNodes().item(3).getTextContent()),
+                            LocalDate.parse(nodoRuta.getChildNodes().item(4).getTextContent()));
                     listaRutas.add(newRuta);
                 }
             }

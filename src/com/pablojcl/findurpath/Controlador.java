@@ -12,9 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.LinkedList;
 
 public class Controlador implements ActionListener, ListSelectionListener, WindowListener {
     private Vista vista;
@@ -31,7 +29,8 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
     private boolean comprovarCamposVaciosNew() {
         if (vista.textFieldNamePath.getText().isEmpty() ||
                 vista.textFieldLength.getText().isEmpty() ||
-                vista.textFieldReferencia.getText().isEmpty()){
+                vista.textFieldReferencia.getText().isEmpty() ||
+                vista.JDatePicker.getText().isEmpty()){
             return true;
         } else {
             return false;
@@ -46,10 +45,23 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
         vista.textFieldLength.setText(null);
         vista.textFieldReferencia.setText(null);
         vista.textFieldDelPath.setText(null);
+        vista.JDatePicker.setDate(null);
     }
 
     private void limpiarSR(){
         vista.textAreaSR.setText(null);
+    }
+
+    private void mostrarTodo() {
+        limpiarSR();
+        for(Ruta ruta: modelo.listaRutas)
+            if(vista.checkBoxBTTSearch.isSelected()){
+                if(ruta.isBtt()){
+                    vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
+                }
+            } else {
+                vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
+            }
     }
 
     private void asociarListeners(ActionListener listener){
@@ -60,6 +72,8 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
         vista.btnGR.addActionListener(listener);
         vista.btnPR.addActionListener(listener);
         vista.btnSL.addActionListener(listener);
+        vista.especificoRadioButton.addActionListener(listener);
+        vista.todoRadioButton.addActionListener(listener);
     }
 
     private void addWindowListener(WindowListener listener) {
@@ -83,10 +97,13 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
                     break;
                 }
                 modelo.newRuta(vista.textFieldNamePath.getText(),Integer.parseInt(vista.textFieldLength.getText()),
-                        vista.textFieldReferencia.getText(),vista.checkBoxBTT.isSelected());
-                limpiarCampos();
+                        vista.textFieldReferencia.getText(),vista.checkBoxBTT.isSelected(),vista.JDatePicker.getDate());
                 Utilities.mensajeRecuerdo("Ruta creada con exito");
                 limpiarCampos();
+                if(vista.todoRadioButton.isSelected()){
+                    mostrarTodo();
+                }
+
                 break;
 
             case "import":
