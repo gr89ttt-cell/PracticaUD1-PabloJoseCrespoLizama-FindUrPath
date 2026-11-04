@@ -62,7 +62,7 @@ public abstract class Ruta {
         return nombre + " | Ingreso: " + fecha_ingreso +"\n" +
                 "\n Kilometros: " + kilometros +
                 "\n Referencia: " + referencia +
-                "\n Ruta multiactividad: " + btt +
+                "\n Ruta multiactividad: " + (btt ? "Si" : "No") +
                 "\n --------------------------------------";
     }
 }

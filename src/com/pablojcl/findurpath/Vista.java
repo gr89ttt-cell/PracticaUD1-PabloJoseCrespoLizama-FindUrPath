@@ -33,6 +33,7 @@ public class Vista {
     public DatePicker JDatePicker;
     public JRadioButton todoRadioButton;
     public JRadioButton especificoRadioButton;
+    public JButton actualizarButton;
 
     public Vista(){
         frame = new JFrame("FindUrPath - Pablo José Crespo Lizama - MVC");

@@ -10,11 +10,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Controlador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Controlador.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Ruta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Ruta.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Utilities.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Utilities.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Vista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FindUrPath/com/pablojcl/findurpath/Vista.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Controlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Utilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Ruta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Ruta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Vista.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Vista.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Vista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pablojcl/findurpath/Vista.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +24,9 @@
   </component>
   <component name="CoverageViewManager">
     <option name="myElementSize" value="209" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="FindUrPath" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -41,6 +44,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="265" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -113,7 +117,7 @@
       <workItem from="1793801043795" duration="344000" />
       <workItem from="1793801464732" duration="589000" />
       <workItem from="1793808048728" duration="531000" />
-      <workItem from="1793810288867" duration="5859000" />
+      <workItem from="1793810288867" duration="8085000" />
     </task>
     <servers />
   </component>

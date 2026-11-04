@@ -76,6 +76,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
         vista.btnSL.addActionListener(listener);
         vista.especificoRadioButton.addActionListener(listener);
         vista.todoRadioButton.addActionListener(listener);
+        vista.actualizarButton.addActionListener(listener);
     }
 
     private void guardarConfiguracion() throws IOException {
@@ -97,13 +98,11 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
             case "Añadir":
                 if (comprovarCamposVaciosNew()) {
                     Utilities.mensajeError("Los siguientes campos no puede estar vacios: \n" +
-                            "Nombre de la Ruta \n Kilometraje \n Referencia"
-                            + vista.textAreaSR.getText());
+                            "Nombre de la Ruta \n Kilometraje \n Referencia");
                     break;
                 }
                 if (modelo.existeRuta(vista.textFieldNamePath.getText())) {
-                    Utilities.mensajeError("Ya existe esta Ruta \n" +
-                            vista.textFieldNamePath.getText());
+                    Utilities.mensajeError("Ya existe esta Ruta \n");
                     break;
                 }
                 modelo.newRuta(vista.textFieldNamePath.getText(),Integer.parseInt(vista.textFieldLength.getText()),
@@ -131,6 +130,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
                         ex.printStackTrace();
                     }
                 }
+                mostrarTodo();
                 break;
 
             case "export":
@@ -149,45 +149,51 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
                 break;
 
             case "GR":
-                limpiarSR();
-                for(Ruta ruta: modelo.listaRutas)
-                    if(ruta instanceof GrandRoute){
-                        if(vista.checkBoxBTTSearch.isSelected()){
-                            if(ruta.isBtt()){
+                if(vista.especificoRadioButton.isSelected()) {
+                    limpiarSR();
+                    for (Ruta ruta : modelo.listaRutas)
+                        if (ruta instanceof GrandRoute) {
+                            if (vista.checkBoxBTTSearch.isSelected()) {
+                                if (ruta.isBtt()) {
+                                    vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
+                                }
+                            } else {
                                 vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
                             }
-                        } else {
-                            vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
                         }
-                    }
+                }
                 break;
 
             case "PR":
-                limpiarSR();
-                for(Ruta ruta: modelo.listaRutas)
-                    if(ruta instanceof PetiteRoute){
-                        if(vista.checkBoxBTTSearch.isSelected()){
-                            if(ruta.isBtt()){
+                if(vista.especificoRadioButton.isSelected()) {
+                    limpiarSR();
+                    for (Ruta ruta : modelo.listaRutas)
+                        if (ruta instanceof PetiteRoute) {
+                            if (vista.checkBoxBTTSearch.isSelected()) {
+                                if (ruta.isBtt()) {
+                                    vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
+                                }
+                            } else {
                                 vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
                             }
-                        } else {
-                            vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
                         }
-                    }
+                }
                 break;
 
             case "SL":
-                limpiarSR();
-                for(Ruta ruta: modelo.listaRutas)
-                    if(ruta instanceof SenderoL){
-                        if(vista.checkBoxBTTSearch.isSelected()){
-                            if(ruta.isBtt()){
+                if(vista.especificoRadioButton.isSelected()) {
+                    limpiarSR();
+                    for (Ruta ruta : modelo.listaRutas)
+                        if (ruta instanceof SenderoL) {
+                            if (vista.checkBoxBTTSearch.isSelected()) {
+                                if (ruta.isBtt()) {
+                                    vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
+                                }
+                            } else {
                                 vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
                             }
-                        } else {
-                            vista.textAreaSR.setText(vista.textAreaSR.getText() + "\n" + ruta.toString());
                         }
-                    }
+                }
                 break;
 
             case "Borrar":
@@ -201,6 +207,12 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
                         modelo.listaRutas.remove(i);
                     limpiarCampos();
                     break;
+
+            case "Actualizar":
+                if(vista.todoRadioButton.isSelected()) {
+                    mostrarTodo();
+                }
+                break;
         }
     }
 
