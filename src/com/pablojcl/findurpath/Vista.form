@@ -263,7 +263,6 @@
             <properties>
               <background color="-3551276"/>
               <foreground color="-16777216"/>
-              <selected value="true"/>
               <text value="Todo"/>
             </properties>
           </component>

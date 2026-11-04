@@ -13,6 +13,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Properties;
 
 public class Controlador implements ActionListener, ListSelectionListener, WindowListener {
     private Vista vista;
@@ -74,6 +76,14 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
         vista.btnSL.addActionListener(listener);
         vista.especificoRadioButton.addActionListener(listener);
         vista.todoRadioButton.addActionListener(listener);
+    }
+
+    private void guardarConfiguracion() throws IOException {
+        Properties configuracion = new Properties();
+        if (ultimaRutaExportada != null) {
+            configuracion.setProperty("ultimaRutaExportada", ultimaRutaExportada.getAbsolutePath());
+        }
+        configuracion.store(new PrintWriter("perifericos.conf"), "Datos configuracion perifericos");
     }
 
     private void addWindowListener(WindowListener listener) {
@@ -200,12 +210,17 @@ public class Controlador implements ActionListener, ListSelectionListener, Windo
     }
 
     @Override
-    public void windowClosing(WindowEvent e) {
-        int resp = Utilities.mensajeConfirmacion("¿Desea cerrar la ventana?", "Salir");
+    public void windowClosing(WindowEvent windowEvent) {
+        int resp = Utilities.mensajeConfirmacion("¿Desea salir de la aplicación?", "Salir");
         if (resp == JOptionPane.OK_OPTION) {
+            try {
+                guardarConfiguracion();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             System.exit(0);
         }
-    }
+}
 
     @Override
     public void windowClosed(WindowEvent windowEvent) {
